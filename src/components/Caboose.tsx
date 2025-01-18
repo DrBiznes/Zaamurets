@@ -1,11 +1,14 @@
 import React from 'react';
 
-export const Caboose: React.FC = () => {
-  return (
-    <pre className="inline-block">
-      {`____/_______|__P__________|\\_D__D__D_|  |_D__D__D_|
-|_D__D__D__D|____/  |_D__D__D_|  |_D__D__D_|
-  \\_/   \\_/     \\_/    \\_/   \\_/    \\_/   \\_/`}
+export const Caboose: React.FC = () => (
+  <div className="inline-block align-top">
+    <pre className="font-mono m-0 leading-tight text-gray-600">
+      {`_____=======_||____
+ |    _____     |
+ |   |_____|    |
+_|_________________|
+ 'o!o         o!o\`
+-+-+-+-+-+-+-+-+-`}
     </pre>
-  );
-}; 
+  </div>
+); 

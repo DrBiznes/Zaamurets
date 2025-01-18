@@ -8,9 +8,9 @@ export const Train: React.FC<TrainProps> = ({ children, carWidth = 200 }) => {
   return (
     <div className="inline-block whitespace-nowrap">
       <Engine />
-      {React.Children.map(children, child => (
-        React.cloneElement(child as React.ReactElement, { width: carWidth })
-      ))}
+      {React.Children.map(children, child => 
+        React.isValidElement(child) ? React.cloneElement(child, { width: carWidth }) : null
+      )}
       <Caboose />
     </div>
   );

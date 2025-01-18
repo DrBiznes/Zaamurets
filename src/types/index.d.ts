@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
+
 interface TrainCarProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   width?: number;
 }
 
 interface TrainProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   carWidth?: number;
 }
 
