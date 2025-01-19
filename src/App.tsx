@@ -1,26 +1,24 @@
-import React, { useState } from 'react'
-import { TrainFrontIcon } from 'lucide-react'
+import React from 'react'
+import { RailSymbol } from 'lucide-react'
 import Documentation from './components/Documentation'
 import Examples from './components/Examples'
-import GifGenerator from './components/GifGenerator'
+import TrainCreator from './components/TrainCreator'
 import Hero from './components/Hero'
 import './App.css'
 
 const App: React.FC = () => {
-  const [generatedGif, setGeneratedGif] = useState<string | null>(null);
-
   return (
     <div className="app">
       {/* Navigation */}
       <nav className="nav">
         <div className="nav-content">
           <div className="nav-logo">
-            <TrainFrontIcon size={24} className="nav-train-icon" />
+            <RailSymbol size={24} className="nav-train-icon" />
             <span>Zaamurets</span>
           </div>
           <div className="nav-links">
             <a href="#features">Features</a>
-            <a href="#gif-generator">GIF Generator</a>
+            <a href="#train-creator">Train Creator</a>
             <a href="#docs">Documentation</a>
             <a href="#examples">Examples</a>
             <a href="https://github.com/zaamurets/zaamurets" className="github-link">
@@ -62,27 +60,10 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* GIF Generator Section */}
-      <GifGenerator onGifGenerated={setGeneratedGif} />
-
-      {/* Generated GIF Preview */}
-      {generatedGif && (
-        <section className="generated-gif">
-          <div className="section-content">
-            <h2>Your Generated GIF</h2>
-            <div className="gif-preview">
-              <img src={generatedGif} alt="Generated Train Animation" />
-              <a 
-                href={generatedGif} 
-                download="zaamurets-train.gif"
-                className="download-button"
-              >
-                Download GIF
-              </a>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Train Creator Section */}
+      <section id="train-creator">
+        <TrainCreator />
+      </section>
 
       {/* Documentation Section */}
       <Documentation />

@@ -1,0 +1,450 @@
+.train-creator {
+  min-height: 100vh;
+  background: var(--bg-color);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.train-creator-content {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.train-creator-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.train-creator-header h2 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  margin: 0;
+}
+
+.train-creator-header p {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-top: 0.5rem;
+}
+
+/* Train Controls Section */
+.train-controls {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.train-config-section,
+.cars-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.train-config-section h3,
+.cars-section h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.config-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.config-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+.number-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-color);
+  font-family: var(--font-mono);
+}
+
+.color-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-color);
+  font-family: var(--font-mono);
+}
+
+.color-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.color-input-group input[type="color"] {
+  width: 50px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-color);
+  cursor: pointer;
+}
+
+.color-input-group input[type="text"] {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  border-radius: var(--radius);
+}
+
+.config-grid input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--primary-color);
+}
+
+.config-grid input[type="number"] {
+  width: 80px;
+  padding: 0.5rem;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  border-radius: var(--radius);
+}
+
+.marquee-options {
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border-color);
+}
+
+/* Cars Section */
+.cars-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cars-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-car-button,
+.share-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius);
+  min-width: 80px;
+}
+
+.add-car-button:hover:not(:disabled),
+.share-button:hover {
+  background: var(--primary-hover);
+}
+
+.add-car-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cars-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.car-config {
+  background: var(--bg-color);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.car-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.car-header select {
+  flex: 1;
+  max-width: 200px;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  border-radius: var(--radius);
+}
+
+.remove-car-button {
+  background: #dc2626;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius);
+  padding: 0;
+}
+
+.remove-car-button:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.remove-car-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.badge-config {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.badge-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.badge-input-group.span-full {
+  grid-column: span 2;
+}
+
+.badge-input-group label {
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.badge-input-group input,
+.badge-input-group select,
+.car-config > input {
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  border-radius: var(--radius);
+  width: 100%;
+  transition: var(--transition);
+}
+
+.badge-input-group input:focus,
+.badge-input-group select:focus,
+.car-config > input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.color-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.color-presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24px, 1fr));
+  gap: 0.5rem;
+}
+
+.color-preset {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.color-preset:hover {
+  transform: scale(1.1);
+}
+
+.logo-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Train Preview Section */
+.train-preview {
+  background: var(--code-bg);
+  padding: 3rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Share Modal */
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.share-modal-content {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--radius);
+  max-width: 90vw;
+  width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.share-modal-content h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 1.5rem 0;
+}
+
+.share-preview {
+  background: var(--code-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+
+.share-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.share-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.download-button,
+.close-button {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 120px;
+}
+
+.download-button {
+  background: var(--primary-color);
+  color: white;
+}
+
+.download-button:hover {
+  background: var(--primary-hover);
+}
+
+.close-button {
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.close-button:hover {
+  background: var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .train-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .badge-config {
+    grid-template-columns: 1fr;
+  }
+
+  .badge-config .span-full {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .train-creator {
+    padding: 1rem;
+  }
+
+  .train-controls {
+    padding: 1rem;
+  }
+
+  .train-preview {
+    padding: 1.5rem;
+  }
+
+  .cars-actions {
+    flex-direction: row;
+  }
+
+  .share-modal-content {
+    padding: 1rem;
+  }
+} 
