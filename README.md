@@ -1,6 +1,9 @@
 # Zaamurets
 
-A React component library for creating ASCII art trains with support for shields.io badges and custom content. Create animated armored trains with shields.io badges for use in your projects.
+![ZaamuretsGif](https://github.com/user-attachments/assets/f6981c9e-7541-46d8-ae32-eaa3d1a7bb46)
+
+
+A React component library for creating ASCII art trains with support for shields.io badges and custom content. Create animated armored trains with shields.io badges for use in your projects. I use react-fast-marquee to animate it but do whatever floats your train.
 
 ![Zaamurets](https://github.com/user-attachments/assets/3265fd19-0c74-44e3-a0ea-26d6385815be)
 
@@ -8,12 +11,6 @@ A React component library for creating ASCII art trains with support for shields
 
 ```bash
 npm install zaamurets
-```
-
-Or with yarn:
-
-```bash
-yarn add zaamurets
 ```
 
 ## Quick Start
@@ -46,8 +43,6 @@ function AnotherExample() {
   );
 }
 ```
-
-[Rest of README continues as before...]
 
 ## Features
 
