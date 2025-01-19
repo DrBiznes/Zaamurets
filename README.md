@@ -44,8 +44,6 @@ function AnotherExample() {
 }
 ```
 
-[Rest of README continues as before...]
-
 ## Features
 
 - ASCII art trains with engine, cars, and caboose
