@@ -21,7 +21,13 @@
     "ascii",
     "train",
     "shields",
-    "badges"
+    "badges",
+    "zaamurets",
+    "zaamurets-train",
+    "readme",
+    "component",
+    "zaamurets-component",
+    "react-component"
   ],
   "author": "Your Name",
   "license": "MIT",

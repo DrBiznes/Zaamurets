@@ -20,12 +20,11 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => 
   };
 
   const asciiCar = 
-  `______________________________   
-  ||                            |  
-   |                            |  
-  _|____________________________|  
-    'o!o!o                  o!o!o\`
-  -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-  `;
+`   ______________________________
+  ||                            |
+   |                            |
+  _|____________________________|
+  'o!o!o                    o!o!o'`;
 
   const isShieldsBadge = (element: React.ReactElement<ImgProps>): boolean => {
     return element.type === 'img' && 
@@ -34,9 +33,9 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => 
   };
 
   return (
-    <div className="inline-block align-top relative train-car" style={{ width }}>
+    <div style={{ width, position: 'relative', lineHeight: 1.2 }}>
       {/* ASCII Art Background */}
-      <pre className="font-mono m-0 leading-tight text-gray-600">
+      <pre className="font-mono m-0 text-gray-600">
         {asciiCar}
       </pre>
       
