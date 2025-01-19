@@ -1,19 +1,13 @@
 import React, { useState } from 'react'
-import { Train, TrainCar } from 'zaamurets'
-import Marquee from 'react-fast-marquee'
-import { Copy, Check, TrainFrontIcon } from 'lucide-react'
+import { TrainFrontIcon } from 'lucide-react'
 import Documentation from './components/Documentation'
 import Examples from './components/Examples'
+import GifGenerator from './components/GifGenerator'
+import Hero from './components/Hero'
 import './App.css'
 
 const App: React.FC = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText('npm install zaamurets');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const [generatedGif, setGeneratedGif] = useState<string | null>(null);
 
   return (
     <div className="app">
@@ -26,6 +20,7 @@ const App: React.FC = () => {
           </div>
           <div className="nav-links">
             <a href="#features">Features</a>
+            <a href="#gif-generator">GIF Generator</a>
             <a href="#docs">Documentation</a>
             <a href="#examples">Examples</a>
             <a href="https://github.com/zaamurets/zaamurets" className="github-link">
@@ -36,42 +31,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1>Zaamurets</h1>
-            <p className="hero-description">
-              Create delightful, customizable armored train animations to carry your shields.io badges.
-            </p>
-          </div>
-          
-          <div className="hero-actions">
-            <div className="install-command">
-              <code>npm install zaamurets</code>
-              <button onClick={handleCopy} className="copy-button">
-                {copied ? <Check size={16} /> : <Copy size={16} />}
-                <span>{copied ? 'Copied!' : 'Copy'}</span>
-              </button>
-            </div>
-            
-            <div className="hero-buttons">
-              <a href="#gif-generator" className="primary-button">Gif Generator</a>
-              <a href="#docs" className="secondary-button">Docs</a>
-            </div>
-          </div>
-
-          {/* Demo Train */}
-          <div className="hero-demo">
-            <Train animated={true}>
-              <TrainCar>
-                <a href="https://www.npmjs.com/package/zaamurets">
-                  <img src="https://img.shields.io/npm/v/zaamurets?style=flat-square&logo=npm" alt="npm version" />
-                </a>
-              </TrainCar>
-            </Train>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Features Section */}
       <section id="features" className="features">
@@ -102,6 +62,28 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* GIF Generator Section */}
+      <GifGenerator onGifGenerated={setGeneratedGif} />
+
+      {/* Generated GIF Preview */}
+      {generatedGif && (
+        <section className="generated-gif">
+          <div className="section-content">
+            <h2>Your Generated GIF</h2>
+            <div className="gif-preview">
+              <img src={generatedGif} alt="Generated Train Animation" />
+              <a 
+                href={generatedGif} 
+                download="zaamurets-train.gif"
+                className="download-button"
+              >
+                Download GIF
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Documentation Section */}
       <Documentation />
 
@@ -112,9 +94,6 @@ const App: React.FC = () => {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">
-            <Train animated={true}>
-              <TrainCar>🚂</TrainCar>
-            </Train>
             <span>Zaamurets</span>
           </div>
           <div className="footer-links">

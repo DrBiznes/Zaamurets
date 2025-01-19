@@ -74,7 +74,7 @@ const Examples: React.FC = () => {
       title: "Multi-Car Train",
       description: "A train with multiple cars moving in a marquee animation.",
       code: `<Marquee speed={40} gradient={false} pauseOnHover={true}>
-  <Train animated={true}>
+  <Train animated={true} additionalTrackSegments={10}>
     <TrainCar>
       <span>🚂</span>
       <span>First Car</span>
@@ -91,7 +91,7 @@ const Examples: React.FC = () => {
 </Marquee>`,
       component: (
         <Marquee speed={40} gradient={false} pauseOnHover={true}>
-          <Train animated={true}>
+          <Train animated={true} additionalTrackSegments={10}>
             <TrainCar>
               <span>🚂</span>
               <span>First Car</span>
