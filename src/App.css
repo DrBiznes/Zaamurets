@@ -75,6 +75,12 @@ body {
 
 .nav-train-icon {
   color: #646cff;
+  transform: rotate(-20deg);
+  transition: transform 0.2s ease;
+}
+
+.nav-logo-link:hover .nav-train-icon {
+  transform: rotate(0deg);
 }
 
 .nav-links {
