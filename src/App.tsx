@@ -81,7 +81,7 @@ const App: React.FC = () => {
         <div className="footer-content">
           <div className="footer-train">
             <Marquee speed={40} autoFill pauseOnHover>
-              <Train animated={true} additionalTrackSegments={5}>
+              <Train animated={true}>
                 <TrainCar>
                   <a href="https://github.com/DrBiznes">
                     <img src="https://img.shields.io/badge/GitHub-DrBiznes-black?style=flat&logo=github" alt="GitHub" />

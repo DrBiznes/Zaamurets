@@ -15,11 +15,22 @@ const Documentation: React.FC = () => {
       title: 'Getting Started',
       content: (
         <>
-          <p>Zaamurets is a React component library for creating ASCII art trains with support for shields.io badges and custom content. Create animated armored trains with shields.io badges for use in your projects.</p>
+          <p>Zaamurets is a React component library for creating ASCII art trains with support for <a href="https://shields.io" target="_blank" rel="noopener noreferrer">shields.io</a> badges and custom content. Create animated armored trains with shields.io badges for use in your projects.</p>
           
+          <h4>Dependencies</h4>
+          <p>While Zaamurets itself has no dependencies, it works great with:</p>
+          <ul>
+            <li><a href="https://www.npmjs.com/package/react-fast-marquee" target="_blank" rel="noopener noreferrer">react-fast-marquee</a> - For smooth scrolling animations</li>
+            <li><a href="https://shields.io" target="_blank" rel="noopener noreferrer">shields.io</a> - For beautiful, dynamic badges</li>
+          </ul>
+
           <h4>Installation</h4>
           <div className="code-block">
-            <pre><code>npm install zaamurets</code></pre>
+            <pre><code>{`# Install Zaamurets
+npm install zaamurets
+
+# Optional: Install react-fast-marquee for scrolling animations
+npm install react-fast-marquee`}</code></pre>
           </div>
 
           <h4>Quick Start</h4>
@@ -251,6 +262,15 @@ function ClickableExample() {
       title: 'Guidelines',
       content: (
         <>
+          <h4>Using with react-fast-marquee</h4>
+          <p>For scrolling animations, I recommend using react-fast-marquee. Here are some tips:</p>
+          <ul>
+            <li>Use <code>speed</code> prop to control animation speed (recommended: 20-50)</li>
+            <li>Set <code>gradient={false}</code> to avoid fade effects on the edges</li>
+            <li>Enable <code>pauseOnHover</code> for better user interaction</li>
+            <li>Use <code>autoFill</code> to automatically fill empty space</li>
+          </ul>
+
           <h4>Badge Limitations</h4>
           <p>Each train car is limited to a maximum of 2 badges to ensure proper display and readability.</p>
 
