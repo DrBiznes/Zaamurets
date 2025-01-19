@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Train, TrainCar } from 'zaamurets';
 import Marquee from 'react-fast-marquee';
 import { Code, Eye } from 'lucide-react';
+import { Highlight, themes } from 'prism-react-renderer';
 
 const Examples: React.FC = () => {
   const [showCode, setShowCode] = useState<Record<number, boolean>>({});
@@ -138,9 +139,23 @@ const Examples: React.FC = () => {
               </div>
               <div className={showCode[index] ? 'example-code' : 'example-preview'}>
                 {showCode[index] ? (
-                  <pre>
-                    <code>{example.code}</code>
-                  </pre>
+                  <Highlight
+                    theme={themes.vsDark}
+                    code={example.code.trim()}
+                    language="tsx"
+                  >
+                    {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                      <pre className={className} style={{ ...style, background: '#000000' }}>
+                        {tokens.map((line, i) => (
+                          <div key={i} {...getLineProps({ line })}>
+                            {line.map((token, key) => (
+                              <span key={key} {...getTokenProps({ token })} />
+                            ))}
+                          </div>
+                        ))}
+                      </pre>
+                    )}
+                  </Highlight>
                 ) : (
                   example.component
                 )}

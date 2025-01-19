@@ -326,18 +326,62 @@ body {
   overflow-x: auto;
   font-size: 1.1rem;
   line-height: 1.6;
+  padding: 2rem;
 }
 
 .example-code pre {
   margin: 0;
   width: 100%;
+  font-family: var(--font-mono);
+  padding: 1rem;
+  border-radius: 6px;
 }
 
 .example-code code {
   font-family: var(--font-mono);
-  color: var(--text-color);
   white-space: pre;
   font-weight: 500;
+}
+
+/* Prism theme overrides */
+.example-code .token.comment {
+  color: #6a9955;
+}
+
+.example-code .token.string {
+  color: #ce9178;
+}
+
+.example-code .token.number {
+  color: #b5cea8;
+}
+
+.example-code .token.keyword {
+  color: #569cd6;
+}
+
+.example-code .token.function {
+  color: #dcdcaa;
+}
+
+.example-code .token.punctuation {
+  color: #d4d4d4;
+}
+
+.example-code .token.operator {
+  color: #d4d4d4;
+}
+
+.example-code .token.tag {
+  color: #569cd6;
+}
+
+.example-code .token.attr-name {
+  color: #9cdcfe;
+}
+
+.example-code .token.attr-value {
+  color: #ce9178;
 }
 
 .example-header {

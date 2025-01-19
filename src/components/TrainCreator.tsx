@@ -204,7 +204,7 @@ const TrainCreator: React.FC = () => {
   };
 
   const commonBadgeColors = [
-    'brightgreen',
+    'white',
     'green',
     'yellow',
     'orange',

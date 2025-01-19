@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Highlight, themes } from 'prism-react-renderer';
 
 interface Section {
   title: string;
@@ -6,6 +7,28 @@ interface Section {
 }
 
 type SectionKey = 'getting-started' | 'components' | 'types' | 'examples' | 'guidelines';
+
+const CodeBlock: React.FC<{ code: string; language?: string }> = ({ code, language = "tsx" }) => (
+  <div className="code-block">
+    <Highlight
+      theme={themes.vsDark}
+      code={code.trim()}
+      language={language}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={className} style={{ ...style, background: '#000000' }}>
+          {tokens.map((line, i) => (
+            <div key={i} {...getLineProps({ line })}>
+              {line.map((token, key) => (
+                <span key={key} {...getTokenProps({ token })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
+  </div>
+);
 
 const Documentation: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionKey>('getting-started');
@@ -25,17 +48,17 @@ const Documentation: React.FC = () => {
           </ul>
 
           <h4>Installation</h4>
-          <div className="code-block">
-            <pre><code>{`# Install Zaamurets
+          <CodeBlock 
+            code={`# Install Zaamurets
 npm install zaamurets
 
 # Optional: Install react-fast-marquee for scrolling animations
-npm install react-fast-marquee`}</code></pre>
-          </div>
+npm install react-fast-marquee`} 
+            language="bash"
+          />
 
           <h4>Quick Start</h4>
-          <div className="code-block">
-            <pre><code>{`import { Train, TrainCar } from 'zaamurets'
+          <CodeBlock code={`import { Train, TrainCar } from 'zaamurets'
 import Marquee from 'react-fast-marquee'
 
 // With scrolling animation
@@ -60,8 +83,7 @@ function AnotherExample() {
       </TrainCar>
     </Train>
   )
-}`}</code></pre>
-          </div>
+}`} />
         </>
       )
     },
@@ -139,13 +161,11 @@ function AnotherExample() {
       title: 'Types',
       content: (
         <>
-          <div className="code-block">
-            <pre><code>{`interface BadgeConfig {
+          <CodeBlock code={`interface BadgeConfig {
   src: string;      // URL of the badge image
   href?: string;    // Optional click URL for the badge
   alt?: string;     // Optional alt text for the badge
-}`}</code></pre>
-          </div>
+}`} />
         </>
       )
     },
@@ -154,8 +174,7 @@ function AnotherExample() {
       content: (
         <>
           <h4>Basic Badge Display</h4>
-          <div className="code-block">
-            <pre><code>{`import { Train, TrainCar } from 'zaamurets'
+          <CodeBlock code={`import { Train, TrainCar } from 'zaamurets'
 
 function BasicExample() {
   return (
@@ -165,13 +184,11 @@ function BasicExample() {
       </TrainCar>
     </Train>
   )
-}`}</code></pre>
-          </div>
+}`} />
 
           <h4>Multiple Cars Train</h4>
           <p>Create longer trains by adding multiple TrainCar components. Each car can have its own content and configuration.</p>
-          <div className="code-block">
-            <pre><code>{`import { Train, TrainCar } from 'zaamurets'
+          <CodeBlock code={`import { Train, TrainCar } from 'zaamurets'
 import Marquee from 'react-fast-marquee'
 
 function MultiCarExample() {
@@ -195,12 +212,10 @@ function MultiCarExample() {
       </Train>
     </Marquee>
   )
-}`}</code></pre>
-          </div>
+}`} />
 
           <h4>Multiple Badges in One Car</h4>
-          <div className="code-block">
-            <pre><code>{`import { Train, TrainCar } from 'zaamurets'
+          <CodeBlock code={`import { Train, TrainCar } from 'zaamurets'
 
 function MultiBadgeExample() {
   const badges = [
@@ -221,12 +236,10 @@ function MultiBadgeExample() {
       <TrainCar>{badges}</TrainCar>
     </Train>
   )
-}`}</code></pre>
-          </div>
+}`} />
 
           <h4>Animated Track Example</h4>
-          <div className="code-block">
-            <pre><code>{`import { Train, TrainCar } from 'zaamurets'
+          <CodeBlock code={`import { Train, TrainCar } from 'zaamurets'
 
 function AnimatedTrackExample() {
   return (
@@ -236,12 +249,10 @@ function AnimatedTrackExample() {
       </TrainCar>
     </Train>
   )
-}`}</code></pre>
-          </div>
+}`} />
 
           <h4>Clickable Car with Custom Content</h4>
-          <div className="code-block">
-            <pre><code>{`import { Train, TrainCar } from 'zaamurets'
+          <CodeBlock code={`import { Train, TrainCar } from 'zaamurets'
 
 function ClickableExample() {
   return (
@@ -253,8 +264,7 @@ function ClickableExample() {
       </TrainCar>
     </Train>
   )
-}`}</code></pre>
-          </div>
+}`} />
         </>
       )
     },

@@ -365,6 +365,46 @@
   box-shadow: 0 0 0 1px var(--primary-color);
 }
 
+.color-preset[title="brightgreen"] {
+  background-color: #4c1;
+}
+
+.color-preset[title="green"] {
+  background-color: #97ca00;
+}
+
+.color-preset[title="yellow"] {
+  background-color: #dfb317;
+}
+
+.color-preset[title="orange"] {
+  background-color: #fe7d37;
+}
+
+.color-preset[title="red"] {
+  background-color: #e05d44;
+}
+
+.color-preset[title="blue"] {
+  background-color: #007ec6;
+}
+
+.color-preset[title="success"] {
+  background-color: #4c1;
+}
+
+.color-preset[title="important"] {
+  background-color: #fe7d37;
+}
+
+.color-preset[title="critical"] {
+  background-color: #e05d44;
+}
+
+.color-preset[title="informational"] {
+  background-color: #007ec6;
+}
+
 /* Train Preview Section */
 .train-preview {
   background: var(--code-bg);
