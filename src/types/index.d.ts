@@ -6,6 +6,12 @@ interface BadgeConfig {
   alt?: string;
 }
 
+interface TrackProps {
+  width?: number | string;
+  numCars?: number;
+  additionalSegments?: number;  // Number of additional track segments to add
+}
+
 interface TrainCarProps {
   children?: ReactNode | BadgeConfig[];
   width?: number;
@@ -15,6 +21,7 @@ interface TrainCarProps {
 interface TrainProps {
   children?: ReactNode;
   carWidth?: number;
+  additionalTrackSegments?: number;  // Optional number of additional track segments to add
 }
 
-export { TrainCarProps, TrainProps, BadgeConfig }; 
+export { TrainCarProps, TrainProps, BadgeConfig, TrackProps }; 

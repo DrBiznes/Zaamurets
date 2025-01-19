@@ -1,11 +1,7 @@
 import React from 'react';
+import { TrackProps } from '../types';
 
-interface TrackProps {
-  width?: number | string;
-  numCars?: number;
-}
-
-export const Track: React.FC<TrackProps> = ({ width = '100%', numCars = 0 }) => {
+export const Track: React.FC<TrackProps> = ({ width = '100%', numCars = 0, additionalSegments = 0 }) => {
   // Base track pattern that will be repeated
   const trackPattern = '-+-';
   
@@ -14,7 +10,8 @@ export const Track: React.FC<TrackProps> = ({ width = '100%', numCars = 0 }) => 
   const engineRepetitions = 10;
   const carRepetitions = numCars * 12;
   const cabooseRepetitions = 8;
-  const totalRepetitions = engineRepetitions + carRepetitions + cabooseRepetitions;
+  const extraRepetitions = additionalSegments;
+  const totalRepetitions = engineRepetitions + carRepetitions + cabooseRepetitions + extraRepetitions;
   
   const pattern = trackPattern.repeat(totalRepetitions);
 
