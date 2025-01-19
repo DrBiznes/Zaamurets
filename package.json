@@ -1,79 +1,32 @@
 {
   "name": "zaamurets",
-  "version": "1.0.0",
-  "description": "A delightful React component library for creating ASCII art trains with support for shields.io badges",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "clean": "rimraf dist",
-    "test": "jest --config jest.config.js",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "prepublishOnly": "npm run test && npm run build"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "keywords": [
-    "react",
-    "ascii",
-    "train",
-    "shields",
-    "badges",
-    "zaamurets",
-    "zaamurets-train",
-    "readme",
-    "component",
-    "zaamurets-component",
-    "react-component",
-    "ascii-art",
-    "typescript"
-  ],
-  "author": "Jamino",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/DrBiznes/zaamurets"
-  },
-  "bugs": {
-    "url": "https://github.com/DrBiznes/zaamurets/issues"
-  },
-  "homepage": "https://github.com/DrBiznes/zaamurets#readme",
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+  "dependencies": {
+    "lucide-react": "^0.473.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-fast-marquee": "^1.6.5",
+    "zaamurets": "^1.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
-    "@types/jest": "^29.5.14",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-import-resolver-typescript": "^3.6.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-jest": "^27.9.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.33.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "prettier": "^3.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rimraf": "^5.0.5",
-    "ts-jest": "^29.2.5",
-    "typescript": "~5.5.0"
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5"
   }
 }
