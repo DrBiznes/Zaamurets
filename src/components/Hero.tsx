@@ -33,14 +33,14 @@ const SplitFlapCharacter: React.FC<SplitFlapCharacterProps> = ({ targetChar }) =
   }, [targetChar]);
 
   return (
-    <div className="split-flap-char">
-      <div className="split-flap-inner">
-        <div className="split-flap-text">
+    <div className="hero-split-flap-char">
+      <div className="hero-split-flap-inner">
+        <div className="hero-split-flap-text">
           {currentChar}
         </div>
       </div>
-      <div className="split-flap-line" />
-      <div className="split-flap-gradient" />
+      <div className="hero-split-flap-line" />
+      <div className="hero-split-flap-gradient" />
     </div>
   );
 };
@@ -56,7 +56,7 @@ const SplitFlapRow: React.FC<SplitFlapRowProps> = ({ text, totalSlots }) => {
   });
   
   return (
-    <div className="split-flap-row">
+    <div className="hero-split-flap-row">
       {displayText.map((char, index) => (
         <SplitFlapCharacter key={index} targetChar={char} />
       ))}
@@ -76,8 +76,8 @@ const SplitFlapDisplay: React.FC = () => {
   const totalSlots = slotsNeeded + 2;
   
   return (
-    <div className="split-flap-display">
-      <div className="split-flap-content">
+    <div className="hero-split-flap-display">
+      <div className="hero-split-flap-content">
         {lines.map((line, index) => (
           <SplitFlapRow key={index} text={line} totalSlots={totalSlots} />
         ))}
@@ -101,17 +101,17 @@ const Hero: React.FC = () => {
         <SplitFlapDisplay />
         
         <div className="hero-actions-group">
-          <div className="install-command">
+          <div className="hero-install-command">
             <code>npm install zaamurets</code>
-            <button onClick={handleCopy} className="copy-button">
+            <button onClick={handleCopy} className="hero-copy-button">
               {copied ? <Check size={14} /> : <Copy size={14} />}
               <span>{copied ? 'Copied!' : 'Copy'}</span>
             </button>
           </div>
 
           <div className="hero-actions">
-            <a href="#gif-generator" className="action-button primary">Create Your Train</a>
-            <a href="#docs" className="action-button secondary">View Documentation</a>
+            <a href="#gif-generator" className="hero-action-button primary">Create Your Train</a>
+            <a href="#docs" className="hero-action-button secondary">View Documentation</a>
           </div>
         </div>
       </div>
