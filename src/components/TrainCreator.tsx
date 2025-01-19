@@ -217,20 +217,23 @@ const TrainCreator: React.FC = () => {
     'npm',
     'docker',
     'react',
-    'vue',
+    'vue.js',
     'angular',
     'typescript',
     'javascript',
     'python',
     'rust',
-    'go'
+    'go',
+    'modrinth',
+    'curseforge',
+    'X'
   ];
 
   return (
     <section className="train-creator">
       <div className="train-creator-content">
         <div className="train-creator-header">
-          <h2>Train Creator</h2>
+          <h2>Zaamurets Builder</h2>
           <p>Create your custom ASCII train with badges and animations.</p>
         </div>
 

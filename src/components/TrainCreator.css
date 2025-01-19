@@ -41,16 +41,17 @@
   grid-template-columns: 300px 1fr;
   gap: 2rem;
   background: var(--bg-secondary);
-  padding: 2rem;
-  border: 2px solid var(--border-color);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .train-config-section,
 .cars-section {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .train-config-section h3,
@@ -59,18 +60,28 @@
   font-weight: 700;
   color: var(--text-color);
   margin: 0;
+  font-size: 1.25rem;
 }
 
 .config-grid {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-color);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
 }
 
 .config-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.config-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 .checkbox-label {
@@ -80,6 +91,13 @@
   color: var(--text-color);
   font-family: var(--font-mono);
   cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.checkbox-label:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .number-label {
@@ -105,7 +123,7 @@
 }
 
 .color-input-group input[type="color"] {
-  width: 50px;
+  width: 42px;
   height: 32px;
   padding: 0;
   border: 1px solid var(--border-color);
@@ -122,6 +140,7 @@
   color: var(--text-color);
   font-family: var(--font-mono);
   border-radius: var(--radius);
+  font-size: 0.9rem;
 }
 
 .config-grid input[type="checkbox"] {
@@ -138,12 +157,14 @@
   color: var(--text-color);
   font-family: var(--font-mono);
   border-radius: var(--radius);
+  font-size: 0.9rem;
 }
 
 .marquee-options {
-  margin-left: 1.5rem;
+  margin-left: 1.25rem;
   padding-left: 1rem;
   border-left: 2px solid var(--border-color);
+  opacity: 0.9;
 }
 
 /* Cars Section */
@@ -151,6 +172,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 0;
 }
 
 .cars-actions {
@@ -170,11 +192,13 @@
   transition: var(--transition);
   border-radius: var(--radius);
   min-width: 80px;
+  font-size: 0.9rem;
 }
 
 .add-car-button:hover:not(:disabled),
 .share-button:hover {
   background: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
 .add-car-button:disabled {
@@ -185,12 +209,12 @@
 .cars-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .car-config {
   background: var(--bg-color);
-  padding: 1.5rem;
+  padding: 1.25rem 1.75rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   display: flex;
@@ -203,6 +227,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .car-header select {
@@ -214,15 +240,16 @@
   color: var(--text-color);
   font-family: var(--font-mono);
   border-radius: var(--radius);
+  font-size: 0.9rem;
 }
 
 .remove-car-button {
   background: #dc2626;
   color: white;
   border: none;
-  width: 32px;
-  height: 32px;
-  font-size: 1.5rem;
+  width: 28px;
+  height: 28px;
+  font-size: 1.25rem;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -237,6 +264,7 @@
 
 .remove-car-button:hover:not(:disabled) {
   background: #b91c1c;
+  transform: scale(1.05);
 }
 
 .remove-car-button:disabled {
@@ -248,25 +276,32 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: flex-start;
+  padding: 0 1rem;
 }
 
 .badge-row {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
 .badge-input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  min-width: 200px;
+  gap: 0.375rem;
+  min-width: 160px;
+  flex: 1;
+}
+
+.badge-input-group label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
 }
 
 .badge-input-group input.badge-input,
 .badge-input-group select.badge-input {
-  max-width: 200px;
+  width: 100%;
   padding: 0.5rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -274,11 +309,11 @@
   font-family: var(--font-mono);
   border-radius: var(--radius);
   transition: var(--transition);
+  font-size: 0.9rem;
 }
 
 .badge-input-group input.badge-input-long {
   width: 100%;
-  max-width: 300px;
   padding: 0.5rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -286,6 +321,7 @@
   font-family: var(--font-mono);
   border-radius: var(--radius);
   transition: var(--transition);
+  font-size: 0.9rem;
 }
 
 .badge-input-group input.badge-input:focus,
@@ -293,23 +329,28 @@
 .badge-input-group input.badge-input-long:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
 }
 
 .color-select {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .color-presets {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(24px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.25rem;
+  padding: 0.375rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
 }
 
 .color-preset {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   cursor: pointer;
@@ -317,20 +358,15 @@
 }
 
 .color-preset:hover {
-  transform: scale(1.1);
-}
-
-.logo-select {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 1px var(--primary-color);
 }
 
 /* Train Preview Section */
 .train-preview {
   background: var(--code-bg);
   padding: 3rem;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   min-height: 200px;
   display: flex;
@@ -338,6 +374,7 @@
   justify-content: center;
   overflow: hidden;
   transition: background-color 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Share Modal */
@@ -352,6 +389,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .share-modal-content {
@@ -362,6 +400,7 @@
   width: 600px;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .share-modal-content h3 {
@@ -376,6 +415,7 @@
   padding: 1rem;
   border-radius: var(--radius);
   margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
 }
 
 .share-preview img {
@@ -386,20 +426,21 @@
 
 .share-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: flex-end;
 }
 
 .download-button,
 .close-button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   font-family: var(--font-mono);
   font-weight: 500;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
   transition: var(--transition);
-  min-width: 120px;
+  min-width: 100px;
+  font-size: 0.9rem;
 }
 
 .download-button {
@@ -409,6 +450,7 @@
 
 .download-button:hover {
   background: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
 .close-button {
@@ -419,6 +461,7 @@
 
 .close-button:hover {
   background: var(--border-color);
+  transform: translateY(-1px);
 }
 
 /* Responsive Design */
@@ -427,12 +470,16 @@
     grid-template-columns: 1fr;
   }
 
-  .badge-config {
-    grid-template-columns: 1fr;
+  .config-grid {
+    max-width: 600px;
   }
 
-  .badge-config .span-full {
-    grid-column: span 1;
+  .badge-row {
+    flex-direction: column;
+  }
+
+  .badge-input-group {
+    min-width: 100%;
   }
 }
 
@@ -447,10 +494,6 @@
 
   .train-preview {
     padding: 1.5rem;
-  }
-
-  .cars-actions {
-    flex-direction: row;
   }
 
   .share-modal-content {
