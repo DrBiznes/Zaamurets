@@ -5,7 +5,11 @@ import { Caboose } from './Caboose';
 import { Track } from './Track';
 import { TrainProps, TrainCarProps } from '../types';
 
-export const Train: React.FC<TrainProps> = ({ children, additionalTrackSegments = 0 }) => {
+export const Train: React.FC<TrainProps> = ({ 
+  children, 
+  additionalTrackSegments = 0,
+  animated = false 
+}) => {
   const trainStyle: React.CSSProperties = {
     display: 'grid',
     gridAutoFlow: 'column',
@@ -35,7 +39,12 @@ export const Train: React.FC<TrainProps> = ({ children, additionalTrackSegments 
         </div>
       </div>
       <div style={{ marginTop: '-1.9em', width: '100%', position: 'relative' }}>
-        <Track width="100%" numCars={numCars} additionalSegments={additionalTrackSegments} />
+        <Track 
+          width="100%" 
+          numCars={numCars} 
+          additionalSegments={additionalTrackSegments}
+          animated={animated}
+        />
       </div>
     </div>
   );
