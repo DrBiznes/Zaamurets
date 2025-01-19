@@ -1,9 +1,15 @@
 import { ReactNode } from 'react';
 
+interface BadgeConfig {
+  src: string;
+  href?: string;
+  alt?: string;
+}
+
 interface TrainCarProps {
-  children?: ReactNode;
+  children?: ReactNode | BadgeConfig[];
   width?: number;
-  href?: string;  // Optional URL for making the content clickable
+  href?: string;  // Optional URL for making the entire car clickable (used when children is not BadgeConfig[])
 }
 
 interface TrainProps {
@@ -11,4 +17,4 @@ interface TrainProps {
   carWidth?: number;
 }
 
-export { TrainCarProps, TrainProps }; 
+export { TrainCarProps, TrainProps, BadgeConfig }; 

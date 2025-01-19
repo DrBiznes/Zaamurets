@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { TrainCarProps } from '../types';
+import { TrainCarProps, BadgeConfig } from '../types';
 
 interface ImgProps {
   src: string;
@@ -16,7 +16,8 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href 
     height: '24px',   // Fixed height for content area
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    gap: '8px'        // Add spacing between multiple badges
   };
 
   const asciiCar = 
@@ -32,15 +33,48 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href 
            element.props.src.includes('shields.io');
   };
 
+  const isBadgeConfigArray = (children: any): children is BadgeConfig[] => {
+    return Array.isArray(children) && children.every(child => 'src' in child);
+  };
+
+  const renderBadges = (badges: BadgeConfig[]) => {
+    return badges.map((badge, index) => {
+      const img = (
+        <img
+          key={index}
+          src={badge.src}
+          alt={badge.alt || ''}
+          className="max-h-6 w-auto"
+          style={{ imageRendering: 'crisp-edges' }}
+        />
+      );
+
+      return badge.href ? (
+        <a
+          key={index}
+          href={badge.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: 'none' }}
+        >
+          {img}
+        </a>
+      ) : img;
+    });
+  };
+
   const renderContent = () => {
+    if (isBadgeConfigArray(children)) {
+      return renderBadges(children);
+    }
+
     if (React.isValidElement<ImgProps>(children) && isShieldsBadge(children)) {
-      // Shields.io badge handling
       return React.cloneElement(children, {
         className: 'max-h-6 w-auto',
         style: { imageRendering: 'crisp-edges' } as CSSProperties
       });
     }
-    // Generic content wrapper
+
     return (
       <div className="max-w-full max-h-full overflow-hidden">
         {children}
@@ -59,7 +93,7 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href 
       
       {/* Content Area */}
       <div style={contentAreaStyle}>
-        {href ? (
+        {!isBadgeConfigArray(children) && href ? (
           <a 
             href={href}
             target="_blank"
