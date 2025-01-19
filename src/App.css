@@ -60,6 +60,19 @@ body {
   font-weight: 700;
 }
 
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-logo-link:hover {
+  color: var(--primary-color);
+}
+
 .nav-train-icon {
   color: #646cff;
 }
@@ -84,8 +97,19 @@ body {
 
 .github-link {
   padding: 0.5rem 1rem;
-  border-radius: var(--radius);
   background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.github-link .external-arrow {
+  font-size: 0.9em;
+  margin-left: -0.125rem;
+}
+
+.github-link:hover {
+  background: var(--border-color);
 }
 
 /* Features Section */

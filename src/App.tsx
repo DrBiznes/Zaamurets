@@ -1,5 +1,5 @@
 import React from 'react'
-import { RailSymbol } from 'lucide-react'
+import { RailSymbol, Github } from 'lucide-react'
 import Documentation from './components/Documentation'
 import Examples from './components/Examples'
 import TrainCreator from './components/TrainCreator'
@@ -13,16 +13,19 @@ const App: React.FC = () => {
       <nav className="nav">
         <div className="nav-content">
           <div className="nav-logo">
-            <RailSymbol size={24} className="nav-train-icon" />
-            <span>Zaamurets</span>
+            <a href="#" className="nav-logo-link">
+              <RailSymbol size={24} className="nav-train-icon" />
+              <span>Zaamurets</span>
+            </a>
           </div>
           <div className="nav-links">
-            <a href="#features">Features</a>
             <a href="#train-creator">Train Creator</a>
             <a href="#docs">Documentation</a>
             <a href="#examples">Examples</a>
-            <a href="https://github.com/zaamurets/zaamurets" className="github-link">
-              GitHub ↗
+            <a href="https://github.com/DrBiznes/Zaamurets" className="github-link">
+              <Github size={18} />
+              <span>GitHub</span>
+              <span className="external-arrow">↗</span>
             </a>
           </div>
         </div>

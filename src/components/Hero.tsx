@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="hero-actions">
-            <a href="#gif-generator" className="hero-action-button primary">Create Your Train</a>
+            <a href="#train-creator" className="hero-action-button primary">Create Your Train</a>
             <a href="#docs" className="hero-action-button secondary">View Documentation</a>
           </div>
         </div>
