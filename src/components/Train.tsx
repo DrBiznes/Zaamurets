@@ -5,7 +5,7 @@ import { Caboose } from './Caboose';
 import { Track } from './Track';
 import { TrainProps, TrainCarProps } from '../types';
 
-export const Train: React.FC<TrainProps> = ({ children, carWidth = 200, additionalTrackSegments = 0 }) => {
+export const Train: React.FC<TrainProps> = ({ children, additionalTrackSegments = 0 }) => {
   const trainStyle: React.CSSProperties = {
     display: 'grid',
     gridAutoFlow: 'column',
@@ -26,7 +26,7 @@ export const Train: React.FC<TrainProps> = ({ children, carWidth = 200, addition
         {React.Children.map(children, (child, index) => 
           React.isValidElement<TrainCarProps>(child) ? (
             <div style={{ marginLeft: index > 0 ? '-1ch' : 0 }}>
-              {React.cloneElement(child, { width: carWidth })}
+              {React.cloneElement(child)}
             </div>
           ) : null
         )}

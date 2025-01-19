@@ -26,14 +26,14 @@ describe('Train', () => {
     expect(screen.getByText('Car 3')).toBeInTheDocument();
   });
 
-  it('applies custom width to train cars', () => {
+  it('renders train cars with fixed width of 240px', () => {
     const { container } = render(
-      <Train carWidth={300}>
-        <TrainCar>Wide Car</TrainCar>
+      <Train>
+        <TrainCar>Car Content</TrainCar>
       </Train>
     );
-    const trainCar = container.querySelector('.train-car');
-    expect(trainCar).toHaveStyle({ width: '300px' });
+    const trainCarDiv = container.querySelector('div[style*="width: 240px"]');
+    expect(trainCarDiv).toBeInTheDocument();
   });
 
   it('renders with shields.io badges', () => {

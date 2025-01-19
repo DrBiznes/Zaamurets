@@ -7,7 +7,7 @@ interface ImgProps {
   style?: CSSProperties;
 }
 
-export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href }) => {
+export const TrainCar: React.FC<TrainCarProps> = ({ children, href }) => {
   const contentAreaStyle: CSSProperties = {
     position: 'absolute',
     top: '28px',      // Aligned with the middle row
@@ -25,7 +25,7 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href 
 `   ______________________________
   ||                            |
    |                            |
-  _|____________________________|
+  _|____________________________|_
   'o!o!o                    o!o!o'`;
 
   const isShieldsBadge = (element: React.ReactElement<ImgProps>): boolean => {
@@ -86,7 +86,7 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href 
   const content = renderContent();
 
   return (
-    <div style={{ width, position: 'relative', lineHeight: 1.2 }}>
+    <div style={{ width: 240, position: 'relative', lineHeight: 1.2 }}>
       {/* ASCII Art Background */}
       <pre className="font-mono m-0 text-gray-600">
         {asciiCar}

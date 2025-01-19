@@ -14,13 +14,11 @@ interface TrackProps {
 
 interface TrainCarProps {
   children?: ReactNode | BadgeConfig[];
-  width?: number;
   href?: string;  // Optional URL for making the entire car clickable (used when children is not BadgeConfig[])
 }
 
 interface TrainProps {
   children?: ReactNode;
-  carWidth?: number;
   additionalTrackSegments?: number;  // Optional number of additional track segments to add
 }
 
