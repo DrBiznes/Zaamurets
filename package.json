@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/DrBiznes/zaamurets/issues"
   },
-  "homepage": "https://github.com/DrBiznes/zaamurets#readme",
+  "homepage": "https://zaamurets.jamino.me",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
