@@ -6,7 +6,7 @@ import './TrainCreator.css';
 
 interface TrainCarConfig {
   id: string;
-  type: 'badge' | 'text';
+  type: 'badge' | 'text' | 'image';
   content: string;
   href?: string;
   badgeConfig?: {
@@ -133,6 +133,13 @@ const TrainCreator: React.FC = () => {
         </TrainCar>
       );
     }
+    if (car.type === 'image') {
+      return (
+        <TrainCar key={car.id} href={car.href}>
+          <img src={car.content} alt="Custom badge or image" />
+        </TrainCar>
+      );
+    }
     return (
       <TrainCar key={car.id} href={car.href}>
         <span>{car.content}</span>
@@ -200,16 +207,13 @@ const TrainCreator: React.FC = () => {
     'brightgreen',
     'green',
     'yellow',
-    'yellowgreen',
     'orange',
     'red',
     'blue',
-    'lightgrey',
     'success',
     'important',
     'critical',
-    'informational',
-    'inactive'
+    'informational'
   ];
 
   const commonLogos = [
@@ -377,10 +381,11 @@ const TrainCreator: React.FC = () => {
                   <div className="car-header">
                     <select
                       value={car.type}
-                      onChange={e => updateCar(car.id, { type: e.target.value as 'badge' | 'text' })}
+                      onChange={e => updateCar(car.id, { type: e.target.value as 'badge' | 'text' | 'image' })}
                     >
                       <option value="badge">Badge</option>
                       <option value="text">Text</option>
+                      <option value="image">Image Link</option>
                     </select>
                     <button 
                       onClick={() => removeCar(car.id)}
@@ -391,7 +396,20 @@ const TrainCreator: React.FC = () => {
                     </button>
                   </div>
 
-                  {car.type === 'badge' ? (
+                  {car.type === 'image' ? (
+                    <div className="badge-config">
+                      <div className="badge-input-group">
+                        <label>Image URL</label>
+                        <input
+                          type="text"
+                          className="badge-input-long"
+                          placeholder="Enter shields.io or image URL"
+                          value={car.content}
+                          onChange={e => updateCar(car.id, { content: e.target.value })}
+                        />
+                      </div>
+                    </div>
+                  ) : car.type === 'badge' ? (
                     <div className="badge-config">
                       <div className="badge-row">
                         <div className="badge-input-group">
@@ -460,7 +478,7 @@ const TrainCreator: React.FC = () => {
                             value={car.badgeConfig?.logo || ''}
                             onChange={e => updateBadgeConfig(car.id, { logo: e.target.value })}
                           >
-                            <option value="">Custom Logo URL</option>
+                            <option value="">Pick a Logo</option>
                             {commonLogos.map(logo => (
                               <option key={logo} value={logo}>{logo}</option>
                             ))}

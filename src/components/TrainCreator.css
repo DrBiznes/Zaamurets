@@ -340,21 +340,24 @@
 
 .color-presets {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.25rem;
   padding: 0.375rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
+  width: 100%;
+  max-width: 220px;
 }
 
 .color-preset {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   cursor: pointer;
   transition: var(--transition);
+  margin: 0 auto;
 }
 
 .color-preset:hover {

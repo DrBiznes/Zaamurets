@@ -94,7 +94,7 @@ const App: React.FC = () => {
                 </TrainCar>
                 <TrainCar>
                   <a href="https://jamino.me">
-                    <img src="https://img.shields.io/badge/Website-jamino.me-4CAF50?style=flat&logo=googlechrome&logoColor=white" alt="Website" />
+                    <img src="https://img.shields.io/badge/Website-jamino.me-lightgrey?style=social&logo=googlechrome&logoColor=black" alt="Website" />
                   </a>
                 </TrainCar>
               </Train>
