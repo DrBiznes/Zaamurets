@@ -23,8 +23,12 @@ export const Train: React.FC<TrainProps> = ({ children, carWidth = 200 }) => {
         <div style={{ marginRight: '-1ch' }}>
           <Engine />
         </div>
-        {React.Children.map(children, child => 
-          React.isValidElement<TrainCarProps>(child) ? React.cloneElement(child, { width: carWidth }) : null
+        {React.Children.map(children, (child, index) => 
+          React.isValidElement<TrainCarProps>(child) ? (
+            <div style={{ marginLeft: index > 0 ? '-1ch' : 0 }}>
+              {React.cloneElement(child, { width: carWidth })}
+            </div>
+          ) : null
         )}
         <Caboose />
       </div>
