@@ -1,11 +1,26 @@
 import React from 'react';
 
 interface TrackProps {
-  width?: number;
+  width?: number | string;
+  numCars?: number;
 }
 
-export const Track: React.FC<TrackProps> = ({ width = '100%' }) => (
-  <div style={{ width }}>
-    <pre className="font-mono m-0 text-gray-600">-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-</pre>
-  </div>
-); 
+export const Track: React.FC<TrackProps> = ({ width = '100%', numCars = 0 }) => {
+  // Base track pattern that will be repeated
+  const trackPattern = '-+-';
+  
+  // Calculate repetitions based on train composition:
+  // Engine (10) + Cars (12 each) + Caboose (8)
+  const engineRepetitions = 10;
+  const carRepetitions = numCars * 12;
+  const cabooseRepetitions = 8;
+  const totalRepetitions = engineRepetitions + carRepetitions + cabooseRepetitions;
+  
+  const pattern = trackPattern.repeat(totalRepetitions);
+
+  return (
+    <div style={{ width, overflow: 'hidden' }}>
+      <pre className="font-mono m-0 text-gray-600">{pattern}</pre>
+    </div>
+  );
+}; 

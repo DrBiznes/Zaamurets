@@ -14,6 +14,9 @@ export const Train: React.FC<TrainProps> = ({ children, carWidth = 200 }) => {
     width: 'fit-content'
   };
 
+  // Calculate number of train cars
+  const numCars = React.Children.count(children);
+
   return (
     <div className="w-full overflow-hidden">
       <div style={trainStyle}>
@@ -23,8 +26,8 @@ export const Train: React.FC<TrainProps> = ({ children, carWidth = 200 }) => {
         )}
         <Caboose />
       </div>
-      <div style={{ marginTop: '-1.9em' }}>
-        <Track />
+      <div style={{ marginTop: '-1.9em', width: '100%', position: 'relative' }}>
+        <Track width="100%" numCars={numCars} />
       </div>
     </div>
   );
