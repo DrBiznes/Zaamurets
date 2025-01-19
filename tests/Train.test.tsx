@@ -1,5 +1,6 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+
 import '@testing-library/jest-dom';
 import { Train, TrainCar } from '../src';
 
@@ -61,14 +62,16 @@ describe('Train', () => {
 
   it('validates additionalTrackSegments prop', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
-    
+
     render(
       <Train additionalTrackSegments={-1}>
         <TrainCar>Test</TrainCar>
       </Train>
     );
-    
-    expect(consoleWarn).toHaveBeenCalledWith('additionalTrackSegments should be a non-negative number');
+
+    expect(consoleWarn).toHaveBeenCalledWith(
+      'additionalTrackSegments should be a non-negative number'
+    );
     consoleWarn.mockRestore();
   });
 
@@ -79,7 +82,7 @@ describe('Train', () => {
         <TrainCar>Test</TrainCar>
       </Train>
     );
-    
+
     const initialPattern = container.querySelector('pre')?.textContent;
     jest.advanceTimersByTime(200);
     rerender(
@@ -88,7 +91,7 @@ describe('Train', () => {
       </Train>
     );
     const updatedPattern = container.querySelector('pre')?.textContent;
-    
+
     expect(initialPattern).not.toBe(updatedPattern);
     jest.useRealTimers();
   });
@@ -96,12 +99,10 @@ describe('Train', () => {
   it('handles clickable train cars with href prop', () => {
     render(
       <Train>
-        <TrainCar href="https://example.com">
-          Click me
-        </TrainCar>
+        <TrainCar href="https://example.com">Click me</TrainCar>
       </Train>
     );
-    
+
     const link = screen.getByText('Click me').closest('a');
     expect(link).toHaveAttribute('href', 'https://example.com');
     expect(link).toHaveAttribute('target', '_blank');
@@ -111,14 +112,16 @@ describe('Train', () => {
   it('handles badge config array format', () => {
     const badges = [
       { src: 'https://img.shields.io/badge/test1-passing-green', alt: 'test1' },
-      { src: 'https://img.shields.io/badge/test2-failing-red', alt: 'test2', href: 'https://example.com' }
+      {
+        src: 'https://img.shields.io/badge/test2-failing-red',
+        alt: 'test2',
+        href: 'https://example.com',
+      },
     ];
 
     render(
       <Train>
-        <TrainCar>
-          {badges}
-        </TrainCar>
+        <TrainCar>{badges}</TrainCar>
       </Train>
     );
 
@@ -126,4 +129,4 @@ describe('Train', () => {
     const linkedBadge = screen.getByAltText('test2').closest('a');
     expect(linkedBadge).toHaveAttribute('href', 'https://example.com');
   });
-}); 
+});

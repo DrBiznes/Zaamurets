@@ -1,25 +1,28 @@
 import React, { useState, useEffect, memo, useMemo } from 'react';
 
-export const Engine: React.FC = memo(() => {
+const Engine = memo(() => {
   const [steamIndex, setSteamIndex] = useState(0);
-  
+
   // Steam patterns that create a continuous billowing effect
-  const steamPatterns = useMemo(() => [
-    ['o • ° ∙        ', 'o'],
-    [' o • ° ∙     ∙ ', '•'],
-    ['  o • ° ∙   ° ', '°'],
-    ['   o • ° ∙ • ', '∙'],
-    ['    o • ° o   ', ' '],
-    ['     o • • ° ∙', ' '],
-    ['      o ° ∙  ', ' '],
-    ['       • ∙   ', ' '],
-    ['o       ∙    ', 'o'],
-    [' o • ° ∙     ', '•']
-  ], []);
+  const steamPatterns = useMemo(
+    () => [
+      ['o • ° ∙        ', 'o'],
+      [' o • ° ∙     ∙ ', '•'],
+      ['  o • ° ∙   ° ', '°'],
+      ['   o • ° ∙ • ', '∙'],
+      ['    o • ° o   ', ' '],
+      ['     o • • ° ∙', ' '],
+      ['      o ° ∙  ', ' '],
+      ['       • ∙   ', ' '],
+      ['o       ∙    ', 'o'],
+      [' o • ° ∙     ', '•'],
+    ],
+    []
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSteamIndex((prev) => (prev + 1) % steamPatterns.length);
+      setSteamIndex(prev => (prev + 1) % steamPatterns.length);
     }, 200); // Faster animation for smoother effect
 
     return () => clearInterval(interval);
@@ -36,4 +39,8 @@ export const Engine: React.FC = memo(() => {
 _/oo OOOOO oo\`  ooo   ooo`}</pre>
     </div>
   );
-}); 
+});
+
+Engine.displayName = 'Engine';
+
+export { Engine };

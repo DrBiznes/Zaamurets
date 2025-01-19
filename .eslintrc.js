@@ -32,7 +32,10 @@ module.exports = {
       version: 'detect'
     },
     'import/resolver': {
-      typescript: {}
+      typescript: {},
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
     }
   },
   rules: {
@@ -47,6 +50,24 @@ module.exports = {
         'newlines-between': 'always',
         alphabetize: { order: 'asc', caseInsensitive: true }
       }
-    ]
+    ],
+    'import/no-unresolved': 'off',
+    'import/namespace': 'off',
+    'import/named': 'off',
+    'import/default': 'off',
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
+    '@typescript-eslint/no-explicit-any': ['warn', {
+      ignoreRestArgs: true
+    }],
+    'react/display-name': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    'prettier/prettier': ['error', {
+      singleQuote: true,
+      trailingComma: 'es5',
+      printWidth: 100,
+      tabWidth: 2,
+      semi: true
+    }]
   }
 }; 
