@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Train, TrainCar } from 'zaamurets';
 import { Copy, Check } from 'lucide-react';
+import Marquee from 'react-fast-marquee';
 import './Hero.css';
 
 interface SplitFlapCharacterProps {
@@ -116,15 +117,17 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="train-preview-section">
-        <div className="train-container">
-          <Train animated={true} speed={1}>
-            <TrainCar>
-              <a href="https://www.npmjs.com/package/zaamurets">
-                <img src="https://img.shields.io/npm/v/zaamurets?style=flat-square&logo=npm" alt="npm version" />
-              </a>
-            </TrainCar>
-          </Train>
+      <div className="hero-train-preview-section">
+        <div className="hero-train-container">
+          <Marquee speed={40} autoFill pauseOnHover>
+            <Train animated={true} additionalTrackSegments={20}>
+              <TrainCar>
+                <a href="https://www.npmjs.com/package/zaamurets">
+                  <img src="https://img.shields.io/npm/v/zaamurets?style=flat-square&logo=npm" alt="npm version" />
+                </a>
+              </TrainCar>
+            </Train>
+          </Marquee>
         </div>
       </div>
     </section>
