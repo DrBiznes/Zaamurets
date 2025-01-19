@@ -2,6 +2,8 @@
 
 A React component library for creating ASCII art trains with support for shields.io badges and custom content. Create animated documentation with smooth-scrolling trains using react-fast-marquee, enable the built-in track animation pattern, or combine both effects for maximum impact.
 
+![Zaamurets](https://github.com/user-attachments/assets/3265fd19-0c74-44e3-a0ea-26d6385815be)
+
 
 ## Installation
 
