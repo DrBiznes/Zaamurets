@@ -13,12 +13,6 @@ A React component library for creating ASCII art trains with support for shields
 npm install zaamurets
 ```
 
-Or with yarn:
-
-```bash
-yarn add zaamurets
-```
-
 ## Quick Start
 
 ```jsx
