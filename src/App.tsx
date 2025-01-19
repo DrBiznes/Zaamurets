@@ -1,5 +1,7 @@
 import React from 'react'
 import { RailSymbol, Github } from 'lucide-react'
+import { Train, TrainCar } from 'zaamurets'
+import Marquee from 'react-fast-marquee'
 import Documentation from './components/Documentation'
 import Examples from './components/Examples'
 import TrainCreator from './components/TrainCreator'
@@ -77,16 +79,29 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-logo">
-            <span>Zaamurets</span>
-          </div>
-          <div className="footer-links">
-            <a href="https://github.com/zaamurets/zaamurets">GitHub</a>
-            <a href="#docs">Documentation</a>
-            <a href="#examples">Examples</a>
+          <div className="footer-train">
+            <Marquee speed={40} autoFill pauseOnHover>
+              <Train animated={true} additionalTrackSegments={5}>
+                <TrainCar>
+                  <a href="https://github.com/DrBiznes">
+                    <img src="https://img.shields.io/badge/GitHub-DrBiznes-black?style=flat&logo=github" alt="GitHub" />
+                  </a>
+                </TrainCar>
+                <TrainCar>
+                  <a href="https://twitter.com/DrBiznez">
+                    <img src="https://img.shields.io/badge/Twitter-DrBiznez-1DA1F2?style=flat&logo=x" alt="Twitter" />
+                  </a>
+                </TrainCar>
+                <TrainCar>
+                  <a href="https://jamino.me">
+                    <img src="https://img.shields.io/badge/Website-jamino.me-4CAF50?style=flat&logo=googlechrome&logoColor=white" alt="Website" />
+                  </a>
+                </TrainCar>
+              </Train>
+            </Marquee>
           </div>
           <div className="footer-copyright">
-            © {new Date().getFullYear()} Zaamurets. MIT License.
+            © {new Date().getFullYear()} Jamino. MIT License.
           </div>
         </div>
       </footer>
