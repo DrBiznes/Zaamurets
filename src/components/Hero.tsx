@@ -120,10 +120,20 @@ const Hero: React.FC = () => {
       <div className="hero-train-preview-section">
         <div className="hero-train-container">
           <Marquee speed={40} autoFill pauseOnHover>
-            <Train animated={true} additionalTrackSegments={20}>
+            <Train animated={true} additionalTrackSegments={10}>
               <TrainCar>
                 <a href="https://www.npmjs.com/package/zaamurets">
                   <img src="https://img.shields.io/npm/v/zaamurets?style=flat-square&logo=npm" alt="npm version" />
+                </a>
+              </TrainCar>
+              <TrainCar>
+                <a href="https://github.com/DrBiznes/zaamurets">
+                  <img src="https://img.shields.io/github/stars/DrBiznes/zaamurets?style=flat-square&logo=github" alt="github stars" />
+                </a>
+              </TrainCar>
+              <TrainCar>
+                <a href="https://www.npmjs.com/package/zaamurets">
+                  <img src="https://img.shields.io/npm/dt/zaamurets?style=flat-square&logo=npm" alt="npm downloads" />
                 </a>
               </TrainCar>
             </Train>
