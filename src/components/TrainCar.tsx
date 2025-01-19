@@ -1,5 +1,6 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, memo, useMemo } from 'react';
 import { TrainCarProps, BadgeConfig } from '../types';
+import { ErrorBoundary } from './ErrorBoundary';
 
 interface ImgProps {
   src: string;
@@ -7,7 +8,16 @@ interface ImgProps {
   style?: CSSProperties;
 }
 
-export const TrainCar: React.FC<TrainCarProps> = ({ children, href }) => {
+const MAX_BADGES = 2;
+
+class TooManyBadgesError extends Error {
+  constructor() {
+    super(`Maximum of ${MAX_BADGES} badges allowed per train car`);
+    this.name = 'TooManyBadgesError';
+  }
+}
+
+export const TrainCar: React.FC<TrainCarProps> = memo(({ children, href }) => {
   const contentAreaStyle: CSSProperties = {
     position: 'absolute',
     top: '28px',      // Aligned with the middle row
@@ -38,8 +48,24 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, href }) => {
     return Array.isArray(children) && children.every(child => 'src' in child);
   };
 
-  const renderBadges = (badges: BadgeConfig[]) => {
+  const validateBadges = (badges: BadgeConfig[] | React.ReactElement<ImgProps>) => {
+    if (isBadgeConfigArray(badges)) {
+      if (badges.length > MAX_BADGES) {
+        throw new TooManyBadgesError();
+      }
+    } else if (React.Children.count(badges) > MAX_BADGES) {
+      throw new TooManyBadgesError();
+    }
+  };
+
+  const renderBadges = useMemo(() => (badges: BadgeConfig[]) => {
+    validateBadges(badges);
     return badges.map((badge, index) => {
+      if (!badge.src) {
+        console.warn('Badge source is required');
+        return null;
+      }
+
       const img = (
         <img
           key={index}
@@ -62,7 +88,7 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, href }) => {
         </a>
       ) : img;
     });
-  };
+  }, []);
 
   const renderContent = () => {
     if (isBadgeConfigArray(children)) {
@@ -70,6 +96,7 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, href }) => {
     }
 
     if (React.isValidElement<ImgProps>(children) && isShieldsBadge(children)) {
+      validateBadges(children);
       return React.cloneElement(children, {
         className: 'max-h-6 w-auto',
         style: { imageRendering: 'crisp-edges' } as CSSProperties
@@ -86,25 +113,27 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, href }) => {
   const content = renderContent();
 
   return (
-    <div style={{ width: 240, position: 'relative', lineHeight: 1.2 }}>
-      {/* ASCII Art Background */}
-      <pre className="font-mono m-0 text-gray-600">
-        {asciiCar}
-      </pre>
-      
-      {/* Content Area */}
-      <div style={contentAreaStyle}>
-        {!isBadgeConfigArray(children) && href ? (
-          <a 
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: 'none' }}
-          >
-            {content}
-          </a>
-        ) : content}
+    <ErrorBoundary>
+      <div style={{ width: 240, position: 'relative', lineHeight: 1.2 }}>
+        {/* ASCII Art Background */}
+        <pre className="font-mono m-0 text-gray-600">
+          {asciiCar}
+        </pre>
+        
+        {/* Content Area */}
+        <div style={contentAreaStyle}>
+          {!isBadgeConfigArray(children) && href ? (
+            <a 
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              {content}
+            </a>
+          ) : content}
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
-}; 
+}); 

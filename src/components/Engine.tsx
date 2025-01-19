@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useMemo } from 'react';
 
-export const Engine: React.FC = () => {
+export const Engine: React.FC = memo(() => {
   const [steamIndex, setSteamIndex] = useState(0);
   
   // Steam patterns that create a continuous billowing effect
-  const steamPatterns = [
+  const steamPatterns = useMemo(() => [
     ['o • ° ∙        ', 'o'],
     [' o • ° ∙     ∙ ', '•'],
     ['  o • ° ∙   ° ', '°'],
@@ -15,7 +15,7 @@ export const Engine: React.FC = () => {
     ['       • ∙   ', ' '],
     ['o       ∙    ', 'o'],
     [' o • ° ∙     ', '•']
-  ];
+  ], []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,7 +23,7 @@ export const Engine: React.FC = () => {
     }, 200); // Faster animation for smoother effect
 
     return () => clearInterval(interval);
-  }, []);
+  }, [steamPatterns.length]);
 
   const [topSteam, bottomSteam] = steamPatterns[steamIndex];
 
@@ -36,4 +36,4 @@ export const Engine: React.FC = () => {
 _/oo OOOOO oo\`  ooo   ooo`}</pre>
     </div>
   );
-}; 
+}); 

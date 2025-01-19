@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useMemo } from 'react';
 import { TrackProps } from '../types';
 
-export const Track: React.FC<TrackProps> = ({ 
+export const Track: React.FC<TrackProps> = memo(({ 
   width = '100%', 
   numCars = 0, 
   additionalSegments = 0,
@@ -10,20 +10,21 @@ export const Track: React.FC<TrackProps> = ({
   const [trackIndex, setTrackIndex] = useState(0);
   
   // Track patterns that create a moving effect by alternating characters
-  const trackPatterns = [
+  const trackPatterns = useMemo(() => [
     '-+-',  // Pattern 1
     '+-+',  // Pattern 2
     '-+-',  // Pattern 3
     '+-+'   // Pattern 4
-  ];
+  ], []);
   
-  // Calculate repetitions based on train composition:
-  // Engine (10) + Cars (12 each) + Caboose (8)
-  const engineRepetitions = 10;
-  const carRepetitions = numCars * 12;
-  const cabooseRepetitions = 8;
-  const extraRepetitions = additionalSegments;
-  const totalRepetitions = engineRepetitions + carRepetitions + cabooseRepetitions + extraRepetitions;
+  // Calculate repetitions based on train composition
+  const totalRepetitions = useMemo(() => {
+    const engineRepetitions = 10;
+    const carRepetitions = Math.max(0, numCars) * 12;
+    const cabooseRepetitions = 8;
+    const extraRepetitions = Math.max(0, additionalSegments);
+    return engineRepetitions + carRepetitions + cabooseRepetitions + extraRepetitions;
+  }, [numCars, additionalSegments]);
 
   useEffect(() => {
     if (!animated) return;
@@ -33,15 +34,18 @@ export const Track: React.FC<TrackProps> = ({
     }, 200); // Match Engine animation speed
 
     return () => clearInterval(interval);
-  }, [animated]);
+  }, [animated, trackPatterns.length]);
 
-  const pattern = animated 
-    ? trackPatterns[trackIndex].repeat(totalRepetitions)
-    : trackPatterns[0].repeat(totalRepetitions);
+  const pattern = useMemo(() => 
+    animated 
+      ? trackPatterns[trackIndex].repeat(totalRepetitions)
+      : trackPatterns[0].repeat(totalRepetitions),
+    [animated, trackIndex, trackPatterns, totalRepetitions]
+  );
 
   return (
     <div style={{ width, overflow: 'hidden' }}>
       <pre className="font-mono m-0 text-gray-600">{pattern}</pre>
     </div>
   );
-}; 
+}); 
