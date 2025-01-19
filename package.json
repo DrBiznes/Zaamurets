@@ -1,7 +1,7 @@
 {
-  "name": "ascii-train-react",
+  "name": "zaamurets",
   "version": "1.0.0",
-  "description": "ASCII train component for React with support for shields.io badges",
+  "description": "A delightful React component library for creating ASCII art trains with support for shields.io badges",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "test": "jest",
+    "test": "jest --config jest.config.js",
     "prepare": "npm run build",
     "prepublishOnly": "npm test"
   },
@@ -36,13 +36,14 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
-    "@types/jest": "^29.5.6",
+    "@types/jest": "^29.5.14",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
-    "typescript": "^5.7.3",
+    "jest-environment-jsdom": "^29.7.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3"
   }
 }

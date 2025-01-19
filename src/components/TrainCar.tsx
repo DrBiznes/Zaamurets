@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { TrainCarProps } from '../types';
 
+interface ImgProps {
+  src: string;
+  className?: string;
+  style?: CSSProperties;
+}
+
 export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => {
-  const contentAreaStyle = {
+  const contentAreaStyle: CSSProperties = {
     position: 'absolute',
     top: '28px',      // Aligned with the middle row
     left: '20px',     // Padding from left border
@@ -13,15 +19,22 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => 
     justifyContent: 'center'
   };
 
-  const asciiCar = `_____=======_||____
- |                 |
- |                 |
-_|_________________|
- 'o!o         o!o\`
--+-+-+-+-+-+-+-+-`;
+  const asciiCar = 
+  `______________________________   
+  ||                            |  
+   |                            |  
+  _|____________________________|  
+    'o!o!o                  o!o!o\`
+  -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-  `;
+
+  const isShieldsBadge = (element: React.ReactElement<ImgProps>): boolean => {
+    return element.type === 'img' && 
+           typeof element.props.src === 'string' && 
+           element.props.src.includes('shields.io');
+  };
 
   return (
-    <div className="inline-block align-top relative" style={{ width }}>
+    <div className="inline-block align-top relative train-car" style={{ width }}>
       {/* ASCII Art Background */}
       <pre className="font-mono m-0 leading-tight text-gray-600">
         {asciiCar}
@@ -29,12 +42,11 @@ _|_________________|
       
       {/* Content Area */}
       <div style={contentAreaStyle}>
-        {React.isValidElement(children) && children.type === 'img' && 
-         children.props.src?.includes('shields.io') ? (
+        {React.isValidElement<ImgProps>(children) && isShieldsBadge(children) ? (
           // Shields.io badge handling
           React.cloneElement(children, {
             className: 'max-h-6 w-auto',
-            style: { imageRendering: 'crisp-edges' }
+            style: { imageRendering: 'crisp-edges' } as CSSProperties
           })
         ) : (
           // Generic content wrapper
