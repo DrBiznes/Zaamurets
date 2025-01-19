@@ -7,7 +7,7 @@ interface ImgProps {
   style?: CSSProperties;
 }
 
-export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => {
+export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href }) => {
   const contentAreaStyle: CSSProperties = {
     position: 'absolute',
     top: '28px',      // Aligned with the middle row
@@ -32,6 +32,24 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => 
            element.props.src.includes('shields.io');
   };
 
+  const renderContent = () => {
+    if (React.isValidElement<ImgProps>(children) && isShieldsBadge(children)) {
+      // Shields.io badge handling
+      return React.cloneElement(children, {
+        className: 'max-h-6 w-auto',
+        style: { imageRendering: 'crisp-edges' } as CSSProperties
+      });
+    }
+    // Generic content wrapper
+    return (
+      <div className="max-w-full max-h-full overflow-hidden">
+        {children}
+      </div>
+    );
+  };
+
+  const content = renderContent();
+
   return (
     <div style={{ width, position: 'relative', lineHeight: 1.2 }}>
       {/* ASCII Art Background */}
@@ -41,18 +59,16 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200 }) => 
       
       {/* Content Area */}
       <div style={contentAreaStyle}>
-        {React.isValidElement<ImgProps>(children) && isShieldsBadge(children) ? (
-          // Shields.io badge handling
-          React.cloneElement(children, {
-            className: 'max-h-6 w-auto',
-            style: { imageRendering: 'crisp-edges' } as CSSProperties
-          })
-        ) : (
-          // Generic content wrapper
-          <div className="max-w-full max-h-full overflow-hidden">
-            {children}
-          </div>
-        )}
+        {href ? (
+          <a 
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            {content}
+          </a>
+        ) : content}
       </div>
     </div>
   );
