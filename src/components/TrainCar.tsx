@@ -17,7 +17,8 @@ export const TrainCar: React.FC<TrainCarProps> = ({ children, width = 200, href 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '8px'        // Add spacing between multiple badges
+    gap: '8px',       // Add spacing between multiple badges
+    marginRight: '-1.5ch' // Offset the extra space in ASCII art
   };
 
   const asciiCar = 
