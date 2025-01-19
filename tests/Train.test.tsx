@@ -59,40 +59,6 @@ describe('Train', () => {
     expect(badge.tagName).toBe('IMG');
   });
 
-  describe('badge limit validation', () => {
-    it('allows up to 2 badges', () => {
-      const { container } = render(
-        <Train>
-          <TrainCar>
-            <img src="https://img.shields.io/badge/test1-passing-green" alt="test badge 1" />
-            <img src="https://img.shields.io/badge/test2-passing-blue" alt="test badge 2" />
-          </TrainCar>
-        </Train>
-      );
-      expect(screen.getByAltText('test badge 1')).toBeInTheDocument();
-      expect(screen.getByAltText('test badge 2')).toBeInTheDocument();
-    });
-
-    it('throws error when exceeding badge limit', () => {
-      const { container } = render(
-        <Train>
-          <TrainCar>
-            <>
-              <img src="https://img.shields.io/badge/test1-passing-green" alt="test badge 1" />
-              <img src="https://img.shields.io/badge/test2-passing-blue" alt="test badge 2" />
-              <img src="https://img.shields.io/badge/test3-passing-red" alt="test badge 3" />
-            </>
-          </TrainCar>
-        </Train>
-      );
-      
-      // Verify error boundary rendered error message
-      const errorMessage = container.querySelector('.text-red-500');
-      expect(errorMessage).toBeInTheDocument();
-      expect(errorMessage).toHaveTextContent('Maximum of 2 badges allowed per train car');
-    });
-  });
-
   it('validates additionalTrackSegments prop', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
     

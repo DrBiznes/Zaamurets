@@ -17,7 +17,7 @@ class TooManyBadgesError extends Error {
   }
 }
 
-export const TrainCar: React.FC<TrainCarProps> = memo(({ children, href }) => {
+export const TrainCar = memo(({ children, href }: TrainCarProps): React.ReactElement => {
   const contentAreaStyle: CSSProperties = {
     position: 'absolute',
     top: '28px',      // Aligned with the middle row

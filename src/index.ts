@@ -1,3 +1,6 @@
-export { Train } from './components/Train';
-export { TrainCar } from './components/TrainCar';
-export type { TrainProps, TrainCarProps } from './types'; 
+import { Train } from './components/Train';
+import { TrainCar } from './components/TrainCar';
+import type { TrainProps, TrainCarProps, BadgeConfig } from './types';
+
+export { Train, TrainCar };
+export type { TrainProps, TrainCarProps, BadgeConfig }; 

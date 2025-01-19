@@ -6,11 +6,11 @@ import { Track } from './Track';
 import { TrainProps, TrainCarProps } from '../types';
 import { ErrorBoundary } from './ErrorBoundary';
 
-export const Train: React.FC<TrainProps> = memo(({ 
+export const Train = memo(({ 
   children, 
   additionalTrackSegments = 0,
   animated = false 
-}) => {
+}: TrainProps): React.ReactElement => {
   const trainStyle: React.CSSProperties = useMemo(() => ({
     display: 'grid',
     gridAutoFlow: 'column',
