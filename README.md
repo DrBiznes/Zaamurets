@@ -7,8 +7,6 @@ A React component library for creating ASCII art trains with support for shields
 
 [Live Demo, Documentation, and Train Creator](https://zaamurets.jamino.me)
 
-![Zaamurets](https://github.com/user-attachments/assets/3265fd19-0c74-44e3-a0ea-26d6385815be)
-
 ## Installation
 
 ```bash
