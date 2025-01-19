@@ -104,25 +104,27 @@ const Hero: React.FC = () => {
           <div className="install-command">
             <code>npm install zaamurets</code>
             <button onClick={handleCopy} className="copy-button">
-              {copied ? <Check size={16} /> : <Copy size={16} />}
+              {copied ? <Check size={14} /> : <Copy size={14} />}
               <span>{copied ? 'Copied!' : 'Copy'}</span>
             </button>
-          </div>
-
-          <div className="train-preview">
-            <Train animated={true}>
-              <TrainCar>
-                <a href="https://www.npmjs.com/package/zaamurets">
-                  <img src="https://img.shields.io/npm/v/zaamurets?style=flat-square&logo=npm" alt="npm version" />
-                </a>
-              </TrainCar>
-            </Train>
           </div>
 
           <div className="hero-actions">
             <a href="#gif-generator" className="action-button primary">Create Your Train</a>
             <a href="#docs" className="action-button secondary">View Documentation</a>
           </div>
+        </div>
+      </div>
+
+      <div className="train-preview-section">
+        <div className="train-container">
+          <Train animated={true} speed={1}>
+            <TrainCar>
+              <a href="https://www.npmjs.com/package/zaamurets">
+                <img src="https://img.shields.io/npm/v/zaamurets?style=flat-square&logo=npm" alt="npm version" />
+              </a>
+            </TrainCar>
+          </Train>
         </div>
       </div>
     </section>
