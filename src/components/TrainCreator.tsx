@@ -13,7 +13,7 @@ interface TrainCarConfig {
     label: string;
     message: string;
     color: string;
-    style?: string;
+    style: string;
     logo?: string;
     logoColor?: string;
     labelColor?: string;
@@ -82,13 +82,18 @@ const TrainCreator: React.FC = () => {
     ));
   };
 
-  const updateBadgeConfig = (id: string, updates: Partial<TrainCarConfig['badgeConfig']>) => {
-    setCars(prev => prev.map(car => 
-      car.id === id ? {
+  const updateBadgeConfig = (id: string, updates: Partial<NonNullable<TrainCarConfig['badgeConfig']>>) => {
+    setCars(prev => prev.map(car => {
+      if (car.id !== id) return car;
+      if (!car.badgeConfig) return car;
+      return {
         ...car,
-        badgeConfig: { ...car.badgeConfig, ...updates }
-      } : car
-    ));
+        badgeConfig: {
+          ...car.badgeConfig,
+          ...updates
+        }
+      };
+    }));
   };
 
   const generateBadgeUrl = (config: TrainCarConfig['badgeConfig']) => {
@@ -165,10 +170,9 @@ const TrainCreator: React.FC = () => {
 
     try {
       const canvas = await html2canvas(trainRef.current, {
-        backgroundColor: getComputedStyle(document.documentElement)
+        background: getComputedStyle(document.documentElement)
           .getPropertyValue('--code-bg')
           .trim(),
-        scale: 2,
         logging: false,
         useCORS: true,
         allowTaint: true
@@ -386,59 +390,70 @@ const TrainCreator: React.FC = () => {
 
                   {car.type === 'badge' ? (
                     <div className="badge-config">
-                      <div className="badge-input-group">
-                        <label>Label</label>
-                        <input
-                          type="text"
-                          placeholder="Label"
-                          value={car.badgeConfig?.label || ''}
-                          onChange={e => updateBadgeConfig(car.id, { label: e.target.value })}
-                        />
-                      </div>
-                      <div className="badge-input-group">
-                        <label>Message</label>
-                        <input
-                          type="text"
-                          placeholder="Message"
-                          value={car.badgeConfig?.message || ''}
-                          onChange={e => updateBadgeConfig(car.id, { message: e.target.value })}
-                        />
-                      </div>
-                      <div className="badge-input-group">
-                        <label>Color</label>
-                        <div className="color-select">
+                      <div className="badge-row">
+                        <div className="badge-input-group">
+                          <label>Label</label>
                           <input
                             type="text"
-                            placeholder="Color (name or hex)"
-                            value={car.badgeConfig?.color || ''}
-                            onChange={e => updateBadgeConfig(car.id, { color: e.target.value })}
+                            className="badge-input"
+                            placeholder="Label"
+                            value={car.badgeConfig?.label || ''}
+                            onChange={e => updateBadgeConfig(car.id, { label: e.target.value })}
                           />
-                          <div className="color-presets">
-                            {commonBadgeColors.map(color => (
-                              <button
-                                key={color}
-                                className="color-preset"
-                                style={{ backgroundColor: color }}
-                                onClick={() => updateBadgeConfig(car.id, { color })}
-                                title={color}
-                              />
-                            ))}
-                          </div>
+                        </div>
+                        <div className="badge-input-group">
+                          <label>Message</label>
+                          <input
+                            type="text"
+                            className="badge-input"
+                            placeholder="Message"
+                            value={car.badgeConfig?.message || ''}
+                            onChange={e => updateBadgeConfig(car.id, { message: e.target.value })}
+                          />
                         </div>
                       </div>
-                      <div className="badge-input-group">
-                        <label>Label Color (optional)</label>
-                        <input
-                          type="text"
-                          placeholder="Label Color"
-                          value={car.badgeConfig?.labelColor || ''}
-                          onChange={e => updateBadgeConfig(car.id, { labelColor: e.target.value })}
-                        />
+
+                      <div className="badge-row">
+                        <div className="badge-input-group">
+                          <label>Color</label>
+                          <div className="color-select">
+                            <input
+                              type="text"
+                              className="badge-input"
+                              placeholder="Color (name or hex)"
+                              value={car.badgeConfig?.color || ''}
+                              onChange={e => updateBadgeConfig(car.id, { color: e.target.value })}
+                            />
+                            <div className="color-presets">
+                              {commonBadgeColors.map(color => (
+                                <button
+                                  key={color}
+                                  className="color-preset"
+                                  style={{ backgroundColor: color }}
+                                  onClick={() => updateBadgeConfig(car.id, { color })}
+                                  title={color}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="badge-input-group">
+                          <label>Label Color (optional)</label>
+                          <input
+                            type="text"
+                            className="badge-input"
+                            placeholder="Label Color"
+                            value={car.badgeConfig?.labelColor || ''}
+                            onChange={e => updateBadgeConfig(car.id, { labelColor: e.target.value })}
+                          />
+                        </div>
                       </div>
-                      <div className="badge-input-group">
-                        <label>Logo</label>
-                        <div className="logo-select">
+
+                      <div className="badge-row">
+                        <div className="badge-input-group">
+                          <label>Logo</label>
                           <select
+                            className="badge-input"
                             value={car.badgeConfig?.logo || ''}
                             onChange={e => updateBadgeConfig(car.id, { logo: e.target.value })}
                           >
@@ -448,28 +463,33 @@ const TrainCreator: React.FC = () => {
                             ))}
                           </select>
                         </div>
+                        <div className="badge-input-group">
+                          <label>Logo Color (optional)</label>
+                          <input
+                            type="text"
+                            className="badge-input"
+                            placeholder="Logo Color"
+                            value={car.badgeConfig?.logoColor || ''}
+                            onChange={e => updateBadgeConfig(car.id, { logoColor: e.target.value })}
+                          />
+                        </div>
                       </div>
-                      <div className="badge-input-group">
-                        <label>Logo Color (optional)</label>
-                        <input
-                          type="text"
-                          placeholder="Logo Color"
-                          value={car.badgeConfig?.logoColor || ''}
-                          onChange={e => updateBadgeConfig(car.id, { logoColor: e.target.value })}
-                        />
-                      </div>
-                      <div className="badge-input-group span-full">
-                        <label>Style</label>
-                        <select
-                          value={car.badgeConfig?.style || 'flat'}
-                          onChange={e => updateBadgeConfig(car.id, { style: e.target.value })}
-                        >
-                          <option value="flat">Flat</option>
-                          <option value="flat-square">Flat Square</option>
-                          <option value="plastic">Plastic</option>
-                          <option value="for-the-badge">For the Badge</option>
-                          <option value="social">Social</option>
-                        </select>
+
+                      <div className="badge-row">
+                        <div className="badge-input-group">
+                          <label>Style</label>
+                          <select
+                            className="badge-input"
+                            value={car.badgeConfig?.style || 'flat'}
+                            onChange={e => updateBadgeConfig(car.id, { style: e.target.value })}
+                          >
+                            <option value="flat">Flat</option>
+                            <option value="flat-square">Flat Square</option>
+                            <option value="plastic">Plastic</option>
+                            <option value="for-the-badge">For the Badge</option>
+                            <option value="social">Social</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                   ) : (
@@ -478,6 +498,7 @@ const TrainCreator: React.FC = () => {
                         <label>Text Content</label>
                         <input
                           type="text"
+                          className="badge-input"
                           placeholder="Text content"
                           value={car.content}
                           onChange={e => updateCar(car.id, { content: e.target.value })}
@@ -491,6 +512,7 @@ const TrainCreator: React.FC = () => {
                     <label>Link URL (optional)</label>
                     <input
                       type="text"
+                      className="badge-input-long"
                       placeholder="Link URL"
                       value={car.href || ''}
                       onChange={e => updateCar(car.id, { href: e.target.value })}

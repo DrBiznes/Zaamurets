@@ -245,43 +245,52 @@
 }
 
 .badge-config {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  align-items: flex-start;
+}
+
+.badge-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .badge-input-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-width: 200px;
 }
 
-.badge-input-group.span-full {
-  grid-column: span 2;
-}
-
-.badge-input-group label {
-  color: var(--text-color);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-}
-
-.badge-input-group input,
-.badge-input-group select,
-.car-config > input {
-  padding: 0.75rem;
+.badge-input-group input.badge-input,
+.badge-input-group select.badge-input {
+  max-width: 200px;
+  padding: 0.5rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-color);
   font-family: var(--font-mono);
   border-radius: var(--radius);
-  width: 100%;
   transition: var(--transition);
 }
 
-.badge-input-group input:focus,
-.badge-input-group select:focus,
-.car-config > input:focus {
+.badge-input-group input.badge-input-long {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.badge-input-group input.badge-input:focus,
+.badge-input-group select.badge-input:focus,
+.badge-input-group input.badge-input-long:focus {
   outline: none;
   border-color: var(--primary-color);
 }
